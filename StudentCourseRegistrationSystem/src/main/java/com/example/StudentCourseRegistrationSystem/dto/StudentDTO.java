@@ -3,8 +3,6 @@ package com.example.StudentCourseRegistrationSystem.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-import java.util.UUID;
-
 public class StudentDTO {
     @NotBlank
     private String name;

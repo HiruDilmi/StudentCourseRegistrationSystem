@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public class Course {
-    private UUID id;
+    private Integer id;
 
     @NotBlank
     private String code;
@@ -16,21 +16,21 @@ public class Course {
     @NotBlank
     private String instructor;
 
-    public Course() {
+    public Course(Integer courseID, String courseTitle, String instructorName) {
     }
 
-    public Course(UUID id, String code, String title, String instructor) {
+    public Course(Integer id, String code, String title, String instructor) {
         this.id = id;
         this.code = code;
         this.title = title;
         this.instructor = instructor;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

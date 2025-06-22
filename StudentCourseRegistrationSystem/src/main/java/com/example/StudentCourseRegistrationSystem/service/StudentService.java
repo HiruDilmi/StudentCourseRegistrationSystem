@@ -8,7 +8,7 @@ import java.util.*;
 
 @Service
 public class StudentService {
-    private final Map<UUID, Student> studentMap = new HashMap<>();
+    private final Map<Integer, Student> studentMap = new HashMap<>();
 
     // Register a new student
     public Student registerStudent(StudentDTO studentDTO) {
@@ -18,7 +18,8 @@ public class StudentService {
             throw new IllegalArgumentException("Email already exists");
         }
 
-        UUID studentId = UUID.randomUUID();
+        UUID uuid = UUID.randomUUID();
+        int studentId = uuid.hashCode(); // Using hashCode to generate a unique ID
         Student student = new Student(studentId, studentDTO.getName(), studentDTO.getEmail());
         studentMap.put(studentId, student);
         return student;
@@ -36,5 +37,9 @@ public class StudentService {
     // Get all students
     public List<Student> getAllStudents() {
         return new ArrayList<>(studentMap.values());
+    }
+
+    public boolean existsById(Integer studentId) {
+        return studentMap.containsKey(studentId);
     }
 }
