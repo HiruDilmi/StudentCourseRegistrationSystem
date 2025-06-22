@@ -1,35 +1,34 @@
 package com.example.StudentCourseRegistrationSystem.model;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 public class Registration {
-    private UUID studentID;
-    private UUID courseID;
+    private Integer studentID;
+    private Integer courseID;
     private LocalDateTime registeredAt;
 
     public Registration() {
     }
 
-    public Registration(UUID studentID, UUID courseID, LocalDateTime registeredAt) {
+    public Registration(Integer studentID, Integer courseID, LocalDateTime registeredAt) {
         this.studentID = studentID;
         this.courseID = courseID;
         this.registeredAt = registeredAt;
     }
 
-    public UUID getStudentID() {
+    public Integer getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(UUID studentID) {
+    public void setStudentID(Integer studentID) {
         this.studentID = studentID;
     }
 
-    public UUID getCourseID() {
+    public Integer getCourseID() {
         return courseID;
     }
 
-    public void setCourseID(UUID courseID) {
+    public void setCourseID(Integer courseID) {
         this.courseID = courseID;
     }
 

@@ -3,10 +3,8 @@ package com.example.StudentCourseRegistrationSystem.model;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-import java.util.UUID;
-
 public class Student {
-    private UUID id;
+    private Integer id;
 
     @NotBlank
     private String name;
@@ -18,17 +16,17 @@ public class Student {
     public Student() {
     }
 
-    public Student(UUID id, String name, String email) {
+    public Student(Integer id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -1,32 +1,30 @@
 package com.example.StudentCourseRegistrationSystem.dto;
 
-import java.util.UUID;
-
 public class RegistrationDTO {
-    private UUID studentID;
-    private UUID courseID;
+    private Integer studentID;
+    private Integer courseID;
 
     public RegistrationDTO() {
     }
 
-    public RegistrationDTO(UUID studentID, UUID courseID) {
+    public RegistrationDTO(Integer studentID, Integer courseID) {
         this.studentID = studentID;
         this.courseID = courseID;
     }
 
-    public UUID getStudentID() {
+    public Integer getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(UUID studentID) {
+    public void setStudentID(Integer studentID) {
         this.studentID = studentID;
     }
 
-    public UUID getCourseID() {
+    public Integer getCourseID() {
         return courseID;
     }
 
-    public void setCourseID(UUID courseID) {
+    public void setCourseID(Integer courseID) {
         this.courseID = courseID;
     }
 }

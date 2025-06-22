@@ -2,8 +2,6 @@ package com.example.StudentCourseRegistrationSystem.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
-import java.util.UUID;
-
 public class CourseDTO {
     @NotBlank(message = "Course code cannot be blank")
     private String courseCode;
