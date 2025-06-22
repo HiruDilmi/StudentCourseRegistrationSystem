@@ -1,27 +1,24 @@
 package com.example.StudentCourseRegistrationSystem.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 import java.util.UUID;
 
 public class StudentDTO {
-    private UUID id;
+    @NotBlank
     private String name;
-    private String email;
 
-    public StudentDTO(UUID id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
+    @Email
+    @NotBlank
+    private String email;
 
     public StudentDTO() {
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
+    public StudentDTO(String name, String email) {
+        this.name = name;
+        this.email = email;
     }
 
     public String getName() {

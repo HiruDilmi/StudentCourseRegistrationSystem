@@ -5,8 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public class CourseDTO {
-    private UUID id;
-
     @NotBlank(message = "Course code cannot be blank")
     private String courseCode;
 
@@ -19,19 +17,10 @@ public class CourseDTO {
     public CourseDTO() {
     }
 
-    public CourseDTO(UUID id, String courseCode, String title, String instructorName) {
-        this.id = id;
+    public CourseDTO(String courseCode, String title, String instructorName) {
         this.courseCode = courseCode;
         this.title = title;
         this.instructorName = instructorName;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public String getCourseCode() {
