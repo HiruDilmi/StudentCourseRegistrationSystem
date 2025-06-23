@@ -9,6 +9,11 @@ import java.util.*;
 @Service
 public class RegistrationService {
     private final List<Registration> registrations = new ArrayList<>();
+    private final CourseService courseService;
+
+    public RegistrationService(CourseService courseService) {
+        this.courseService = courseService;
+    }
 
     // Register a student for a course
     public Registration register(Integer studentId, Integer courseId) {
@@ -34,7 +39,12 @@ public class RegistrationService {
 
         for (Registration registration : registrations) {
             if (registration.getStudentID().equals(studentId)) {
-                registeredCourses.add(new Course(registration.getCourseID(), "Course Title", "Instructor Name"));
+                Course course = courseService.getCourseById(registration.getCourseID());
+                if (course != null) {
+                    registeredCourses.add(course);
+                } else {
+                    throw new NoSuchElementException("Course with ID " + registration.getCourseID() + " not found.");
+                }
             }
         }
         return registeredCourses;
