@@ -9,7 +9,7 @@ import java.util.*;
 @Service
 public class CourseService {
     private final Map<Integer, Course> courseMap = new HashMap<>();
-    private int nextId = 001; // To make auto incrementing IDs easier
+    private int nextId = 1; // To make auto incrementing IDs easier
 
     // Create a new course
     public Course createCourse(CourseDTO courseDTO) {
