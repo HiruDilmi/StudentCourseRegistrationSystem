@@ -33,4 +33,12 @@ public class CourseService {
     public boolean existsById(Integer courseId) {
         return courseMap.containsKey(courseId);
     }
+
+    public Course getCourseById(Integer courseID) {
+        Course course = courseMap.get(courseID);
+        if (course == null) {
+            throw new NoSuchElementException("Course with ID " + courseID + " not found.");
+        }
+        return course;
+    }
 }

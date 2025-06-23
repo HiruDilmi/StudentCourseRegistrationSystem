@@ -86,25 +86,21 @@ public class StudentController {
         }
     }
 
-
-    //List registered courses for a student
+    // Get all courses registered by a student
     @GetMapping("/{studentId}/courses")
     public ResponseEntity<?> getRegisteredCourses(@PathVariable Integer studentId) {
-        if(!studentService.existsById(studentId)) {
+        if (!studentService.existsById(studentId)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found");
         }
 
-        try {
-            List<Course> registeredCourses = registrationService.getRegisteredCourses(studentId);
-            if (registeredCourses.isEmpty()) {
-                return ResponseEntity.ok("No courses registered for this student.");
-            }
-            return ResponseEntity.ok(registeredCourses);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        } catch (Exception e) {
-            return new ResponseEntity<>("An error occurred while retrieving registered courses.", HttpStatus.INTERNAL_SERVER_ERROR);
+        List<Course> courses = registrationService.getRegisteredCourses(studentId);
+
+        if (courses.isEmpty()) {
+            return ResponseEntity.ok("No courses registered for this student.");
         }
+
+        return ResponseEntity.ok(courses);
     }
+
 
 }
