@@ -9,17 +9,17 @@ import java.util.*;
 @Service
 public class StudentService {
     private final Map<Integer, Student> studentMap = new HashMap<>();
+    private int nextId = 1; // To make auto incrementing IDs easier
 
     // Register a new student
     public Student registerStudent(StudentDTO studentDTO) {
-        boolean emqailExists = studentMap.values().stream()
+        boolean emailExists = studentMap.values().stream()
                 .anyMatch(student -> student.getEmail().equalsIgnoreCase(studentDTO.getEmail()));
-        if (emqailExists) {
+        if (emailExists) {
             throw new IllegalArgumentException("Email already exists");
         }
 
-        UUID uuid = UUID.randomUUID();
-        int studentId = uuid.hashCode(); // Using hashCode to generate a unique ID
+        int studentId = nextId++;
         Student student = new Student(studentId, studentDTO.getName(), studentDTO.getEmail());
         studentMap.put(studentId, student);
         return student;

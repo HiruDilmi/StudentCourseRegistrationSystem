@@ -30,6 +30,11 @@ public class RegistrationService {
 
     // Remove a registration
     public void unregister(Integer studentId, Integer courseId) {
+        boolean isRegistered = registrations.stream()
+                .anyMatch(registration -> registration.getStudentID().equals(studentId) && registration.getCourseID().equals(courseId));
+        if (!isRegistered) {
+            throw new NoSuchElementException("Student is not registered for this course.");
+        }
         registrations.removeIf(registration -> registration.getStudentID().equals(studentId) && registration.getCourseID().equals(courseId));
     }
 
