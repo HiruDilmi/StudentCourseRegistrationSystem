@@ -9,6 +9,7 @@ import java.util.*;
 @Service
 public class CourseService {
     private final Map<Integer, Course> courseMap = new HashMap<>();
+    private int nextId = 001; // To make auto incrementing IDs easier
 
     // Create a new course
     public Course createCourse(CourseDTO courseDTO) {
@@ -18,8 +19,7 @@ public class CourseService {
             throw new IllegalArgumentException("Course already exists");
         }
 
-        UUID uuid = UUID.randomUUID();
-        Integer courseId = uuid.hashCode(); // Using hashCode as a simple ID generator
+        int courseId = nextId++;
         Course course = new Course(courseId, courseDTO.getCourseCode(), courseDTO.getTitle(), courseDTO.getInstructorName());
         courseMap.put(courseId, course);
         return course;
